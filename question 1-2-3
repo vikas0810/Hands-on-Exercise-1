@@ -1,0 +1,73 @@
+a = c(1:10)
+b = c(15:24)
+df <- data.frame(a,b)
+View(df)
+c = c(25:34)
+df <- data.frame(df,c)
+View(df)
+df$a
+df$a <- c(101:110)
+View(df$a)
+df[,1]
+
+#Assignment 1
+install.packages(datasets)
+"datasets.load"
+View(women)
+
+#method1
+mean.height <- mean (women$height)
+mean.weight <- mean (women$weight)
+women_df <- subset(women,height>mean.height & weight < mean.weight)
+View(women_df)
+
+#method2
+result = women[women$height > mean(women$height) & women$weight < mean(women$weight),]
+nrow(result)
+View(result)
+
+
+#Assignment 2
+install.packages("rvest")
+install.packages("xml2")
+library(rvest)
+city_link = "http://www.worldatlas.com/articles/the-biggest-cities-in-india.html"
+city_file = read_html(city_link)
+city_table = html_nodes(city_file,"table")
+city_table_final <- html_table(city_table[1], fill = TRUE)
+View(city_table_final)
+city_data = as.data.frame(city_table_final)
+View(city_data)
+
+
+#Assignment 3
+
+#method 1
+normal_income <- rnorm(10,mean = 250000, sd = 75000)
+View(normal_income)
+mean(normal_income)
+
+#method 2
+cust.id <- c(1:100)
+income <- rnorm(cust.id,mean=250000, sd = 75000)
+View(income)
+mean(income)
+sd(income)
+
+
+gender <- c(rep("F",100))
+i <- sample(1:100,100,replace = FALSE)
+for(q in 1:100){
+  #print(i[q])
+  #print(q)
+  if(gender[i[q]=="F" && q <= 40){ 
+    #print("It is a female")
+  } else {
+  gender[i(q)] <- c("M")
+  # print ("It is a male")
+  }
+  }
+gender
+table(gender)
+cust = data.frame(cust.id,income.gender)
+View(cust)
